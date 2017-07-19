@@ -1,0 +1,20 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASS"] %>
+
+development:
+  <<: *default
+  database: oauth_client_app_development
+
+test:
+  <<: *default
+  database: oauth_client_app_test
+
+production:
+  <<: *default
+  database: oauth_client_app_production
+  username: oauth_client_app
+  password: <%= ENV['OAUTH_CLIENT_APP_DATABASE_PASSWORD'] %>
